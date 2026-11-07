@@ -1,0 +1,4 @@
+const CACHE='tiendita-v03';const CORE=['/','/static/styles.css','/static/app.js','/static/icon-192.png','/static/icon-512.png','/manifest.webmanifest'];
+self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));
+self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE&&k.startsWith('tiendita-')).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
+self.addEventListener('fetch',event=>{if(event.request.method!=='GET')return;const url=new URL(event.request.url);if(url.pathname.startsWith('/api/')||url.pathname.startsWith('/r/')||url.pathname.startsWith('/p/'))return;event.respondWith(fetch(event.request).then(response=>{if(response.ok){let cp=response.clone();caches.open(CACHE).then(c=>c.put(event.request,cp))}return response}).catch(()=>caches.match(event.request)))})
