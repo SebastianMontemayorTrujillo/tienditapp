@@ -1,0 +1,21 @@
+HACKATHON — TIENDITA INTELIGENTE PEY v0.3
+
+IMPLEMENTADO Y PROBADO EN LOCAL
+- Inventario, compras, recepcion, ventas, fiados, abonos, avisos.
+- Cliente de API PEY POST /codi/qr y POST /codi/pn, respuestas verificadas contra esquema oficial.
+- Receptor webhook firmado con protocolo Standard Webhooks, monto exacto en centavos,
+  identificador de QR/solicitud push, idempotencia por webhook + transaccion.
+- Abonos de fiado por QR o Push, estado pendiente/confirmado, enlace para QR remoto.
+- Frontend permite elegir QR o Push, con etiquetas DEMO / PEY REAL y confirmacion humana.
+- Doble bloqueo de activacion real + token operador; no almacenar credenciales en el ZIP.
+
+NO REALIZADO / BLOQUEADORES
+- PEY LIVE no activado. No se uso credencial compartida, ni se genero cobro, ni llamada de API de produccion.
+- No se registro webhook ni se aprovisiono servidor HTTPS publico.
+- No hay login robusto, control de usuarios por rol ni seguridad de negocio para clientes reales.
+- No hay SMS, WhatsApp ni push externos propios, CFDI, produccion multi-sucursal o web de alta disponibilidad.
+- No hay pago de pruebas validado con el banco PEY de produccion.
+- Cualquier manejo de pago real debera probarse y aprobarse por separado.
+
+PRUEBAS: 10 PASS con pytest; sintaxis JS/Python verificada.
+NO DECLARAR PLATAFORMA LISTA PARA PRODUCCION.
