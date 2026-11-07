@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>tienditapp · boceto del producto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pared:#BFE3D0;   /* verde pistache de pared de tiendita */
+    --pared-2:#A9D6BF;
+    --tinta:#17221D;
+    --rotulo:#FFC93C;  /* amarillo de rótulo pintado */
+    --chile:#D93A2B;
+    --hoja:#FFFFFF;
+    --gris:#5E6B64;
+    --ok:#1E8A4C;
+    --display:"Bungee", "Arial Black", sans-serif;
+    --body:"Bricolage Grotesque", system-ui, sans-serif;
+    --mono:"JetBrains Mono", ui-monospace, monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--pared);color:var(--tinta);font-family:var(--body);line-height:1.4}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--tinta);outline-offset:3px}
+
+  /* ---------- Fachada: toldo + rótulo ---------- */
+  .toldo{height:46px;background:repeating-linear-gradient(90deg,var(--chile) 0 44px,var(--hoja) 44px 88px);
+    -webkit-mask:radial-gradient(22px at 22px 100%,#0000 98%,#000) 0 0/44px 100%;
+            mask:radial-gradient(22px at 22px 100%,#0000 98%,#000) 0 0/44px 100%;}
+  .fachada{max-width:1180px;margin:28px auto 0;padding:0 24px}
+  .rotulo{background:var(--rotulo);border:5px solid var(--tinta);border-radius:6px;padding:22px 28px 18px;
+    box-shadow:8px 8px 0 var(--tinta);transform:rotate(-0.6deg)}
+  .rotulo small{font-family:var(--display);font-size:15px;letter-spacing:.18em;color:var(--chile)}
+  .rotulo h1{font-family:var(--display);font-weight:400;font-size:clamp(44px,8vw,96px);line-height:.95;letter-spacing:-.01em}
+  .rotulo p{font-size:clamp(16px,2vw,20px);font-weight:600;max-width:46ch;margin-top:10px}
+  .aviso{display:inline-block;margin-top:22px;font-family:var(--mono);font-size:12px;background:var(--tinta);color:var(--rotulo);padding:6px 10px;border-radius:3px}
+
+  /* ---------- Secciones ---------- */
+  section{max-width:1180px;margin:56px auto 0;padding:0 24px}
+  section h2{font-size:28px;font-weight:800;letter-spacing:-.01em}
+  section > p.lead{color:var(--gris);font-size:17px;max-width:62ch;margin-top:6px}
+  .fila{display:flex;gap:28px;flex-wrap:wrap;margin-top:26px;align-items:flex-start}
+
+  .paso{width:260px}
+  .paso .etq{display:flex;gap:10px;align-items:baseline;margin-bottom:12px}
+  .paso .n{font-family:var(--display);font-size:26px;color:var(--chile)}
+  .paso .etq b{font-size:16px}
+  .paso .nota{font-size:14px;color:var(--gris);margin-top:12px}
+
+  /* ---------- Teléfono ---------- */
+  .tel{width:260px;height:540px;background:var(--tinta);border-radius:34px;padding:10px;box-shadow:0 18px 30px -18px #0007}
+  .pant{background:var(--hoja);border-radius:26px;height:100%;overflow:hidden;display:flex;flex-direction:column;position:relative}
+  .barra{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;padding:10px 16px 4px;color:var(--gris)}
+  .cab{padding:4px 16px 10px;font-weight:800;font-size:17px;display:flex;justify-content:space-between;align-items:center}
+  .cab span{font-family:var(--mono);font-size:10px;font-weight:500;color:var(--gris)}
+  .cuerpo{flex:1;padding:0 14px 14px;display:flex;flex-direction:column;gap:10px}
+  .btn{display:block;width:100%;border:0;border-radius:14px;padding:14px;font:800 16px var(--body);cursor:pointer;text-align:center}
+  .btn.prim{background:var(--tinta);color:var(--rotulo)}
+  .btn.sec{background:#EEF3F0;color:var(--tinta);font-weight:600;font-size:14px;padding:11px}
+  .mono{font-family:var(--mono)}
+
+  /* 1 · dictado */
+  .dictado{display:flex;gap:12px;align-items:center;background:#EEF3F0;border-radius:16px;padding:12px}
+  .mic{flex:none;width:56px;height:56px;border-radius:50%;border:0;background:var(--chile);color:var(--hoja);display:grid;place-items:center;box-shadow:0 0 0 6px #d93a2b33;cursor:pointer}
+  .dictado small{font-size:11px;color:var(--gris)}
+  .dictado q{display:block;quotes:none;font-weight:800;font-size:15px;line-height:1.2}
+  .rapidos{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+  .rapidos span{background:var(--hoja);border:1.5px solid #d8e2dc;border-radius:10px;font-size:10.5px;font-weight:600;text-align:center;padding:8px 2px}
+  .linea{display:flex;justify-content:space-between;font-size:14px;padding:7px 0;border-bottom:1px dashed #d8e2dc}
+  .linea .mono{font-weight:700}
+  .total{display:flex;justify-content:space-between;align-items:baseline;margin-top:auto}
+  .total b{font-family:var(--mono);font-size:30px}
+
+  /* 2 · QR */
+  .qr{width:180px;height:180px;margin:6px auto 0;display:block}
+  .monto{text-align:center;font-family:var(--mono);font-size:34px;font-weight:700}
+  .espera{display:flex;gap:8px;align-items:center;justify-content:center;font-size:14px;color:var(--gris)}
+  .punto{width:9px;height:9px;border-radius:50%;background:var(--rotulo);animation:lat 1.2s infinite}
+  @keyframes lat{50%{opacity:.25}}
+
+  /* 3 · pagado + voz (firma) */
+  .pagado .pant{background:var(--ok);color:var(--hoja)}
+  .pagado .barra,.pagado .cab span{color:#cfe9da}
+  .voz{margin:18px 14px 0;background:var(--rotulo);color:var(--tinta);border-radius:18px 18px 18px 4px;padding:16px 16px 14px;position:relative}
+  .voz q{font-family:var(--display);font-size:25px;line-height:1.05;quotes:none;display:block}
+  .ondas{display:flex;gap:3px;align-items:center;height:20px;margin-top:10px}
+  .ondas span{width:4px;background:var(--tinta);border-radius:2px;animation:onda 1s infinite ease-in-out}
+  .ondas span:nth-child(2n){animation-delay:.15s}.ondas span:nth-child(3n){animation-delay:.3s}
+  @keyframes onda{0%,100%{height:5px}50%{height:20px}}
+  .recibo{background:#ffffff1f;border-radius:14px;padding:12px;font-size:13px;display:grid;gap:6px}
+  .recibo div{display:flex;justify-content:space-between}
+  .stock{background:var(--hoja);color:var(--tinta);border-radius:14px;padding:12px;font-size:13px}
+  .stock b{display:block;font-size:12px;color:var(--gris);font-weight:600;margin-bottom:6px}
+
+  /* 4 · mi tienda */
+  .kpi{background:#EEF3F0;border-radius:14px;padding:12px}
+  .kpi small{color:var(--gris);font-size:12px}
+  .kpi b{display:block;font-family:var(--mono);font-size:26px}
+  .split{height:10px;border-radius:5px;overflow:hidden;display:flex;margin-top:8px}
+  .split i{display:block}
+  .leyenda{display:flex;gap:12px;font-size:11px;color:var(--gris);margin-top:6px}
+  .leyenda span::before{content:"";display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px;background:currentColor;vertical-align:middle}
+  .resurtir{font-size:13px}
+  .resurtir h4{font-size:13px;margin-bottom:4px}
+  .resurtir div{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #e6ece8}
+  .bajo{color:var(--chile);font-weight:700}
+
+  /* 5 · crédito (visión) */
+  .vision-tag{position:absolute;top:44px;right:-34px;transform:rotate(35deg);background:var(--chile);color:var(--hoja);font:700 10px var(--mono);padding:4px 40px;letter-spacing:.08em}
+  .barras{display:flex;gap:8px;align-items:flex-end;height:90px;padding:8px 4px 0}
+  .barras div{flex:1;background:var(--pared-2);border-radius:4px 4px 0 0;position:relative}
+  .barras div span{position:absolute;bottom:-17px;left:0;right:0;text-align:center;font:500 10px var(--mono);color:var(--gris)}
+  .salud{display:flex;align-items:center;gap:10px;margin-top:22px;background:#EEF3F0;border-radius:14px;padding:12px;font-size:13px}
+  .salud b{font-size:15px}
+  .fino{font-size:11px;color:var(--gris)}
+
+  /* ---------- Pie ---------- */
+  .pie{max-width:1180px;margin:56px auto 0;padding:22px 24px 48px;border-top:2px solid var(--tinta);display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;font-size:14px}
+  .pie h3{font-size:14px;font-weight:800;margin-bottom:6px}
+  .pie p{color:#2f3d36}
+
+  @media (prefers-reduced-motion:reduce){.punto,.ondas span{animation:none}}
+  @media (max-width:600px){.fila{justify-content:center}}
+</style>
+</head>
+<body>
+<div class="toldo" aria-hidden="true"></div>
+
+<header class="fachada">
+  <div class="rotulo">
+    <small>Abarrotes · CoDi · sin comisión</small>
+    <h1>tienditapp</h1>
+    <p>Dicta la venta, cobra por CoDi sin comisión y te avisa en voz alta cuando ya te pagaron, en todos los teléfonos de la tienda.</p>
+  </div>
+  <span class="aviso">BOCETO · productos, montos y cifras de ejemplo, no son datos reales</span>
+</header>
+
+<section aria-labelledby="venta">
+  <h2 id="venta">Una venta, de principio a fin</h2>
+  <p class="lead">Lo que se construye en el hackatón. El cobro es real (pey + CoDi) y el demo se hace con $0.01 MXN.</p>
+
+  <div class="fila">
+    <!-- 1 -->
+    <article class="paso">
+      <div class="etq"><span class="n">1</span><b>Dicta la venta</b></div>
+      <div class="tel"><div class="pant">
+        <div class="barra"><span>12:41</span><span>●●● 4G</span></div>
+        <div class="cab">Cobrar <span>Lupita · empleada</span></div>
+        <div class="cuerpo">
+          <div class="dictado">
+            <button class="mic" aria-label="Mantén presionado para dictar"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button>
+            <div><small>Escuché</small><q>“dos cocas y unas sabritas”</q></div>
+          </div>
+          <div class="rapidos" aria-label="Productos rápidos">
+            <span>Coca 600</span><span>Sabritas</span><span>Bimbo</span><span>Huevo kg</span>
+            <span>Leche 1 L</span><span>Agua 1 L</span><span>Maruchan</span><span>Gansito</span>
+          </div>
+          <div>
+            <div class="linea"><span>Coca-Cola 600 ml × 2</span><span class="mono">$36</span></div>
+            <div class="linea"><span>Sabritas sal 45 g × 1</span><span class="mono">$22</span></div>
+          </div>
+          <div class="total"><span>Total</span><b>$58</b></div>
+          <button class="btn prim">Cobrar $58</button>
+        </div>
+      </div></div>
+      <p class="nota">El empleado mantiene presionado y dicta; OpenAI arma el carrito con el catálogo de la tienda y los precios salen del catálogo, no de la IA. Si el dictado falla, están los botones rápidos.</p>
+    </article>
+
+    <!-- 2 -->
+    <article class="paso">
+      <div class="etq"><span class="n">2</span><b>El cliente paga</b></div>
+      <div class="tel"><div class="pant">
+        <div class="barra"><span>12:41</span><span>●●● 4G</span></div>
+        <div class="cab">Cobro CoDi <span>pey</span></div>
+        <div class="cuerpo">
+          <div class="monto">$58.00</div>
+          <svg class="qr" id="qr" viewBox="0 0 29 29" role="img" aria-label="Código QR de cobro (ilustrativo)"></svg>
+          <p style="text-align:center;font-size:14px">Muestra este código al cliente. Lo escanea desde la app de su banco.</p>
+          <div class="espera"><span class="punto"></span>Esperando pago…</div>
+          <button class="btn sec" style="margin-top:auto">Cancelar cobro</button>
+        </div>
+      </div></div>
+      <p class="nota">QR generado con <span class="mono">POST /codi/qr</span> de pey. El dinero va de banco a banco; ni pey ni nosotros lo tocamos.</p>
+    </article>
+
+    <!-- 3 -->
+    <article class="paso pagado">
+      <div class="etq"><span class="n">3</span><b>Te avisa en voz alta</b></div>
+      <div class="tel"><div class="pant">
+        <div class="barra"><span>12:42</span><span>●●● 4G</span></div>
+        <div class="cab">Pagado <span>CoDi</span></div>
+        <div class="voz" aria-live="polite">
+          <q>¡Ya te pagaron 58 pesos!</q>
+          <div class="ondas" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+        <div class="cuerpo" style="margin-top:14px">
+          <div class="recibo">
+            <div><span>Monto</span><b class="mono">$58.00</b></div>
+            <div><span>Comisión</span><b class="mono">$0.00</b></div>
+            <div><span>Hora</span><b class="mono">12:42:07</b></div>
+          </div>
+          <div class="stock">
+            <b>Inventario actualizado</b>
+            Coca-Cola 600 ml · quedan <span class="mono">4</span><br>
+            Sabritas sal 45 g · quedan <span class="mono">9</span>
+          </div>
+          <button class="btn prim" style="margin-top:auto">Nueva venta</button>
+        </div>
+      </div></div>
+      <p class="nota">El webhook <span class="mono">codi.qr.payment_received</span> de pey dispara la voz en el teléfono de quien cobró y en el del dueño. Nadie saca el celular para revisar el banco.</p>
+    </article>
+
+    <!-- 4 -->
+    <article class="paso">
+      <div class="etq"><span class="n">4</span><b>Cierra el día</b></div>
+      <div class="tel"><div class="pant">
+        <div class="barra"><span>21:05</span><span>●●● 4G</span></div>
+        <div class="cab">Mi tienda <span>hoy</span></div>
+        <div class="cuerpo">
+          <div class="kpi"><small>Vendiste hoy</small><b>$3,420</b>
+            <div class="split"><i style="width:38%;background:var(--tinta)"></i><i style="width:62%;background:var(--pared-2)"></i></div>
+            <div class="leyenda"><span style="color:var(--tinta)">CoDi 38%</span><span style="color:#6f8f80">Efectivo 62%</span></div>
+          </div>
+          <div class="resurtir">
+            <h4>Por resurtir</h4>
+            <div><span>Coca-Cola 600 ml</span><span class="bajo mono">4</span></div>
+            <div><span>Pan Bimbo grande</span><span class="bajo mono">2</span></div>
+            <div><span>Huevo (kg)</span><span class="mono">6</span></div>
+          </div>
+          <div class="resurtir">
+            <h4>Lo que más salió</h4>
+            <div><span>Coca-Cola 600 ml</span><span class="mono">31</span></div>
+            <div><span>Sabritas sal 45 g</span><span class="mono">18</span></div>
+          </div>
+          <button class="btn prim" style="margin-top:auto">Pedir resurtido</button>
+        </div>
+      </div></div>
+      <p class="nota">Cada cobro registra la venta pieza por pieza. El inventario baja solo, sin capturar nada.</p>
+    </article>
+  </div>
+</section>
+
+<section aria-labelledby="futuro">
+  <h2 id="futuro">Lo que abre el historial</h2>
+  <p class="lead">Visión para el pitch, no se construye en el hackatón. El crédito lo da un socio regulado; tienditapp no presta ni toca dinero, y el tendero decide si comparte sus datos.</p>
+  <div class="fila">
+    <article class="paso">
+      <div class="etq"><span class="n" aria-hidden="true">→</span><b>Crédito por buena gestión</b></div>
+      <div class="tel"><div class="pant">
+        <span class="vision-tag">VISIÓN</span>
+        <div class="barra"><span>10:15</span><span>●●● 4G</span></div>
+        <div class="cab">Mi historial</div>
+        <div class="cuerpo">
+          <small style="color:var(--gris);font-size:12px">Ventas por CoDi, últimos 4 meses</small>
+          <div class="barras">
+            <div style="height:35%"><span>jul</span></div>
+            <div style="height:52%"><span>ago</span></div>
+            <div style="height:61%"><span>sep</span></div>
+            <div style="height:78%;background:var(--tinta)"><span>oct</span></div>
+          </div>
+          <div class="salud"><span style="font-size:26px;color:var(--ok)" aria-hidden="true">●</span><div><b>Salud del negocio: buena</b><br><span class="fino">Ilustrativo. Calculado con tus ventas reales.</span></div></div>
+          <p style="font-size:13px">Con 4 meses de ventas verificables ya puedes pedir opciones de crédito.</p>
+          <button class="btn prim" style="margin-top:auto">Ver opciones con socio</button>
+          <p class="fino" style="text-align:center">Tú decides qué datos compartes y con quién.</p>
+        </div>
+      </div></div>
+      <p class="nota">El mismo camino que siguieron BharatPe en India e InfinitePay en Brasil. Lo distinto es que nosotros sabemos <em>qué</em> se vendió, no solo cuánto.</p>
+    </article>
+  </div>
+</section>
+
+<footer class="pie">
+  <div><h3>Contra el efectivo</h3><p>No pierdes la venta, no das cambio, guardas menos efectivo en el cajón y sabes que ya te pagaron sin ver el celular.</p></div>
+  <div><h3>Quién paga</h3><p>El tendero cobra gratis. El ingreso viene de crédito con socio regulado, el Plan Pro y datos agregados para marcas.</p></div>
+  <div><h3>Seguridad</h3><p>Las API keys viven en <span class="mono">.env</span>. El audio dictado se transcribe y no se guarda. Los pagos del demo los hace una persona, a $0.01.</p></div>
+</footer>
+
+<script>
+// QR ilustrativo: patrón determinista con los tres cuadros de esquina. No es un código escaneable.
+(function(){
+  const s=document.getElementById('qr'),N=29,ns='http://www.w3.org/2000/svg';
+  let seed=58;const r=()=>(seed=(seed*16807)%2147483647)/2147483647;
+  const add=(x,y,w,h,f)=>{const e=document.createElementNS(ns,'rect');e.setAttribute('x',x);e.setAttribute('y',y);e.setAttribute('width',w);e.setAttribute('height',h);e.setAttribute('fill',f);s.appendChild(e)};
+  add(0,0,N,N,'#fff');
+  const finder=(x,y)=>{add(x,y,7,7,'#17221D');add(x+1,y+1,5,5,'#fff');add(x+2,y+2,3,3,'#17221D')};
+  const enFinder=(x,y)=>(x<8&&y<8)||(x>N-9&&y<8)||(x<8&&y>N-9);
+  for(let y=0;y<N;y++)for(let x=0;x<N;x++){if(!enFinder(x,y)&&r()>.52)add(x,y,1,1,'#17221D')}
+  finder(0,0);finder(N-7,0);finder(0,N-7);
+})();
+</script>
+</body>
+</html>
