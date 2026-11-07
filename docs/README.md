@@ -2,8 +2,13 @@
 
 Documentos de trabajo del equipo para el hackatón DevDay Exchange (7-8 nov 2026). Complementan el [`README.md`](../README.md) del repo, que sigue siendo la referencia del producto y de la integración con pey.
 
+La definición solicitada se encuentra en [`SPEC.md`](../SPEC.md), [`CAPABILITY_MAP.md`](../CAPABILITY_MAP.md) y [`AGENTS.md`](../AGENTS.md). Las specs y el plan QR/móvil/escritorio son propuestas para el objetivo Next.js confirmado por el usuario; no reemplazan el MVP FastAPI vigente ni la decisión 0001. La transición se registra como D7 pendiente.
+
 | Archivo | Para qué sirve |
 |---|---|
+| [`agent-skills.md`](agent-skills.md) | Instalación verificada de las 25 skills de Addy Osmani y procedencia. |
+| [`../tasks/plan.md`](../tasks/plan.md) y [`../tasks/todo.md`](../tasks/todo.md) | Plan y tareas para teléfonos/computadoras, cámara/imagen QR, compatibilidad y pruebas físicas. |
+| [`ux-codi-alipay.md`](ux-codi-alipay.md) | Modelo de experiencia Alipay adaptado a CoDi, fuentes Banxico y límites de autorización bancaria. |
 | [`propuesta-4pm.md`](propuesta-4pm.md) | Propuesta que se entrega el sábado a las 16:00. Antes de enviarla hay que llenar la tabla de estado con lo que de verdad pasó. |
 | [`plan-entrega.md`](plan-entrega.md) | Plan minuto a minuto hasta la entrega final del domingo a las 13:00, con la evidencia que cierra cada punto y el orden de recortes si vamos tarde. |
 | [`plan-construccion.md`](plan-construccion.md) | Plan técnico: contratos compartidos (tablas, tipos, endpoints), bloques con dueño, tareas con sus pruebas y fallas que no pueden tronar el demo. |

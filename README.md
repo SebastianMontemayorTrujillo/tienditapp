@@ -8,6 +8,8 @@ Proyecto para el hackatón **DevDay Exchange México 2026**, con **PEY como patr
 
 **Estado al 7 de noviembre de 2026, 15:30:** la app del MVP vive en [`app/`](app/README.md) (Python/FastAPI) y ya crea cobros reales con pey. Primer pago real: $0.01 por CoDi, `PAID` a las 15:08. El manual para agentes y personas es [`AGENTS.md`](AGENTS.md); las decisiones, en [`docs/decisiones/`](docs/decisiones/).
 
+**Definición solicitada para la siguiente etapa:** [SPEC.md](SPEC.md), [mapa de capacidades](CAPABILITY_MAP.md) y [plan con tareas móvil/escritorio](tasks/plan.md). Incluyen lector QR por cámara o imagen dentro de Tienditapp, referencia de experiencia [Alipay adaptada a CoDi Banco de México/PEY](docs/ux-codi-alipay.md) y el objetivo Next.js + TypeScript + Supabase + Vercel confirmado por el usuario. Son borradores; no sustituyen la app FastAPI ni la decisión 0001. La transición del objetivo está pendiente en D7, sin código migrado en esta rama.
+
 ## El reto del hackatón
 
 El brief compartido plantea demostrar una integración funcional con PEY y una transacción de prueba, junto con una explicación de cómo la solución podría convertirse en un negocio sostenible. Señala como entrega el **domingo 8 de noviembre de 2026 a las 13:00**; el horario y los requisitos deben cotejarse con las bases oficiales del evento.

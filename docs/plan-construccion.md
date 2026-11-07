@@ -2,6 +2,8 @@
 
 > **Actualización 7-nov 15:30:** el stack cambió a Python/FastAPI + SQLite (ver [`decisiones/0001-stack.md`](decisiones/0001-stack.md)) y la app vive en `app/`. Los contratos, reglas, fallas a cubrir y el orden de trabajo de este plan siguen vigentes; las rutas y comandos de Next.js/Supabase quedan como referencia. Equivalencias: `lib/pey.ts` → `app/pey.py`, `lib/sales.ts` + webhook → `app/main.py`, `lib/parse.ts` → `app/parse.py`, pantallas → `app/static/`, Supabase → `app/db.py` (SQLite). El aviso a varios teléfonos usa consulta periódica (`/api/paid-since`) en lugar de Realtime.
 
+> **Definición adicional solicitada:** [SPEC.md](../SPEC.md) y [CAPABILITY_MAP.md](../CAPABILITY_MAP.md) describen el objetivo Next.js del usuario; [el nuevo plan](../tasks/plan.md) cubre móvil/escritorio y lector QR. La implementación FastAPI y las decisiones vigentes permanecen intactas. Resolver D7 antes de crear el objetivo en `web/`; los ejemplos Next.js de abajo siguen siendo referencias históricas, no una migración autorizada.
+
 > **Para quien ejecute:** cada bloque (A-E) tiene un dueño y un contrato. Construye contra el contrato, no contra el código de otro equipo. Los pasos usan checkboxes (`- [ ]`).
 
 **Meta:** que una tiendita cobre una venta real por CoDi con pey, desde el celular de cualquier empleado, con confirmación verificada por webhook, aviso en voz alta e inventario que se actualiza solo.
