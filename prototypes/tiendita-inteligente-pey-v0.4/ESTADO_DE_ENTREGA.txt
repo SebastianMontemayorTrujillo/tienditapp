@@ -1,0 +1,14 @@
+TIENDITA INTELIGENTE v0.4 — 2026-11-07
+
+NUEVO: ruta /empleado, formulario PIN para modo LIVE, dictado a carrito revisable,
+segundo GET /transaction/{id} al recibir webhook de PEY, separación de carrito
+valor comercial vs cargo PEY por un centavo, estados separados PAGADA_PRUEBA,
+PAGADA y DEMO_PAGADA.
+
+VERIFICADO: 15/15 pruebas automáticas con mocks; 2 archivos JS pasan node --check.
+NO VERIFICADO: transacción bancaria real, HTTPS público, webhook en portal PEY,
+dictado por micrófono en un teléfono real, OpenAI real, despliegue multiusuario.
+
+SIN SECRETOS EN ESTE PAQUETE.
+
+PROTOTIPO: NO APTO PARA PRODUCCIÓN.
