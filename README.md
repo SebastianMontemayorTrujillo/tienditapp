@@ -2,11 +2,11 @@
 
 **Cobros verificados, ventas e inventario para la tiendita de barrio, desde un teléfono.**
 
-![Tiendita de la Esquina, negocio de demostración de Tienditapp](assets/branding/tiendita-banner.jpg)
+![Tiendita de la Esquina, negocio de demostración de Tienditapp](assets/branding/banner.jpeg)
 
 Proyecto para el hackatón **DevDay Exchange México 2026**, con **PEY como patrocinador y proveedor de la API de pagos**. La propuesta es convertir cada cobro en un registro útil para administrar el negocio: quién vendió, qué productos salieron, cuánto se recibió y qué necesita reponerse.
 
-**Estado al 7 de noviembre de 2026:** definición del producto y recursos gráficos disponibles. Este repositorio todavía no contiene una aplicación ejecutable. El MVP, la arquitectura y la demostración descritos aquí son el plan de trabajo propuesto a partir de las conversaciones del equipo.
+**Estado al 7 de noviembre de 2026, 15:30:** la app del MVP vive en [`app/`](app/README.md) (Python/FastAPI) y ya crea cobros reales con pey. Primer pago real: $0.01 por CoDi, `PAID` a las 15:08. El manual para agentes y personas es [`AGENTS.md`](AGENTS.md); las decisiones, en [`docs/decisiones/`](docs/decisiones/).
 
 ## El reto del hackatón
 
@@ -63,7 +63,7 @@ La incorporación de nuevos comercios y cuentas bancarias forma parte del produc
 
 ## Tecnología: arquitectura propuesta
 
-Se propone una interfaz web adaptable al teléfono, potencialmente instalable como PWA, un servidor propio y una base de datos transaccional. El lenguaje, el framework, la base de datos, el proveedor de IA y el alojamiento están pendientes de elección; todavía no existen instrucciones de instalación o ejecución.
+Se propone una interfaz web adaptable al teléfono, potencialmente instalable como PWA, un servidor propio y una base de datos transaccional. Elección para el hackatón: Python/FastAPI + SQLite con frontend estático, OpenAI para el dictado ([decisión 0001](docs/decisiones/0001-stack.md)). Instrucciones en [`app/README.md`](app/README.md).
 
 ```mermaid
 flowchart LR
@@ -165,10 +165,10 @@ La validación debe centrarse en el comportamiento que se presenta: cobro correc
 | --- | --- |
 | Concepto de negocio y fuentes del equipo | Integrados en este README |
 | Identidad del comercio de demostración | Logo y banner JPG disponibles |
-| Aplicación, servidor y base de datos | Pendientes de implementación |
-| Cuenta receptora | El equipo informa una nueva cuenta autorizada vinculada a una nueva clave; falta comprobar el acceso con esa credencial |
-| Acceso a la API | La última comprobación con el archivo local devolvió `403 Forbidden`; no acredita el funcionamiento de la nueva clave |
-| Webhook y cobro completo | Pendientes de implementación y validación |
+| Aplicación, servidor y base de datos | `app/` funciona en local; 12 pruebas automáticas y CI en verde |
+| Cuenta receptora | Activa: pey generó QR y recibió un pago real |
+| Acceso a la API | `GET /transaction/api-key` con la nueva clave → HTTP 200 (15:00) |
+| Webhook y cobro completo | Pago real conciliado (tx `01M6VXE5HTXV66NPJCR1XY7T4A`, 15:08). Webhook firmado implementado; falta URL pública |
 
 Orden propuesto de trabajo:
 
@@ -180,8 +180,8 @@ Orden propuesto de trabajo:
 
 ## Recursos y fuentes
 
-- [Banner JPG](assets/branding/tiendita-banner.jpg): 2172 × 724 píxeles.
-- [Logo cuadrado JPG](assets/branding/tiendita-logo.jpg): 1254 × 1254 píxeles.
+- [Banner](assets/branding/banner.jpeg): 1600 × 533 píxeles.
+- [Logo](assets/branding/logo.jpeg) e [identidad visual](assets/branding/identidadVisual.jpeg); guía en [`GuiaIdentidadGrafica.jpeg`](assets/branding/GuiaIdentidadGrafica.jpeg).
 - [Brief compartido del equipo: DevDay Exchange México 2026](https://chatgpt.com/s/t_6aef79ee56148191a6c905d73d32fa2b): problema, enfoque móvil, propuestas del equipo, modelo comercial, plazo y recomendación del MVP. Se presenta como diagnóstico, no como decisión final.
 - **Resumen de projecto.eml**, proporcionado por el equipo: síntesis de la reunión «Open AI PEY», con inventarios móviles, administración, IA, proveedores, fiado, conectividad y etapas de crecimiento. Incluye recomendaciones del autor además de ideas atribuidas a la reunión.
 - [Documentación oficial de PEY](https://docs.pey.mx/): contrato y comportamiento esperado de la integración.
