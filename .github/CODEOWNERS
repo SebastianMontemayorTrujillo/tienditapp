@@ -1,0 +1,21 @@
+# Quién aprueba qué. GitHub solo acepta usuarios con acceso de escritura al repo.
+# Reemplaza los TODO por usuarios reales de GitHub en el kickoff; mientras tanto, todo lo aprueba el integrador.
+
+*                       @carlosgdelvalle
+
+# Contratos compartidos: solo el integrador
+/app/main.py            @carlosgdelvalle
+/app/db.py              @carlosgdelvalle
+
+# Bloque A · Cobro pey
+# /app/pey.py   TODO-bloque-A
+
+# Bloque B · Captura IA
+# /app/parse.py   TODO-bloque-B
+
+# Bloque C · App del tendero
+# /app/static/   TODO-bloque-C
+
+# Bloque E · Pitch y producto
+/docs/                  @garcialalo98-del @carlosgdelvalle
+/presentacion/          @garcialalo98-del @carlosgdelvalle

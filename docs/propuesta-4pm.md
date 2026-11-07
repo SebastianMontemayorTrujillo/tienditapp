@@ -65,7 +65,7 @@ Nada de esto está validado. Falta confirmar quién paga, cuánto y bajo qué co
 
 ## Arquitectura
 
-Una aplicación web para el teléfono, sin instalar nada desde tiendas, con un servidor propio que guarda las credenciales y decide comercio, cuenta e importe. Una base de datos transaccional registra ventas, pagos, inventario y eventos recibidos. La IA (OpenAI) interpreta el dictado y propone el carrito; los cálculos, permisos y cambios de dinero los hacen reglas del servidor. Los pagos llegan por webhook de pey con firma verificada y deduplicación. Si el webhook no llega, el servidor concilia consultando las transacciones del QR en pey.
+Una aplicación web para el teléfono, sin instalar nada desde tiendas, con un servidor propio en Python/FastAPI y SQLite que guarda las credenciales y decide comercio, cuenta e importe. Una base de datos transaccional registra ventas, pagos, inventario y eventos recibidos. La IA (OpenAI) interpreta el dictado y propone el carrito; los cálculos, permisos y cambios de dinero los hacen reglas del servidor. Los pagos llegan por webhook de pey con firma verificada y deduplicación. Si el webhook no llega, el servidor concilia consultando las transacciones del QR en pey.
 
 Reglas no negociables: las credenciales nunca van al repositorio ni a la aplicación del teléfono; la venta solo pasa a pagada con una confirmación verificada; una confirmación repetida no descuenta inventario dos veces; un importe distinto queda pendiente de conciliación.
 
@@ -75,10 +75,13 @@ Mesa de innovación colaborativa (atribuciones por confirmar): Sergio Arturo Gas
 
 ## Estado al 7 de noviembre, 16:00
 
-| Elemento | Estado |
+| Elemento | Estado y evidencia |
 |---|---|
-| Producto, alcance del MVP y modelo de negocio | Definidos (este documento) |
-| Identidad visual y boceto de pantallas | Listos |
-| Cuenta receptora en pey (CLABE pre-autorizada) | *[actualizar antes de entregar: dada de alta / pendiente]* |
-| Acceso a la API de pey con la nueva clave | *[actualizar: GET /transaction/api-key → 200 / error]* |
-| Aplicación, servidor y webhook | En construcción; entrega el domingo 8 de noviembre a las 13:00 |
+| Producto, alcance del MVP y modelo de negocio | Definidos (este documento, `docs/decisiones/0002`) |
+| Acceso a la API de pey con la nueva clave | `GET /transaction/api-key` → HTTP 200 (15:00) |
+| Cuenta receptora CoDi | Activa: pey generó el QR y recibió el pago |
+| Primer pago real | $0.01 por CoDi, transacción `01M6VXE5HTXV66NPJCR1XY7T4A`, `PAID` a las 15:08:08, conciliada con `GET /transaction/codi/qr/{id}` |
+| App del MVP (`app/`) | Funciona en local: venta escrita o dictada → QR real de pey → espera de pago con conciliación → aviso de voz → inventario y corte. 12 pruebas automáticas en verde (con pey simulado) |
+| IA de OpenAI | Integrada en el código con salida estructurada; pendiente de key para probarla en vivo. Mientras tanto, la pantalla avisa que usa el intérprete local |
+| Webhook en internet | Código listo con firma verificada; falta URL pública HTTPS para registrarlo en pey |
+| Pago real desde la pantalla de la app | Pendiente: el pago de las 15:08 se hizo a un QR creado directo por API |

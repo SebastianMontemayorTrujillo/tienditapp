@@ -9,7 +9,10 @@ Documentos de trabajo del equipo para el hackatón DevDay Exchange (7-8 nov 2026
 | [`plan-construccion.md`](plan-construccion.md) | Plan técnico: contratos compartidos (tablas, tipos, endpoints), bloques con dueño, tareas con sus pruebas y fallas que no pueden tronar el demo. |
 | [`modelo-de-negocio.md`](modelo-de-negocio.md) | Modelo de negocio con comparables de India y Brasil. Separa hechos con fuente de hipótesis por validar. |
 | [`boceto-producto.html`](boceto-producto.html) | Boceto de las pantallas (ábrelo en el navegador). Productos, montos y cifras son de ejemplo. |
+| [`decisiones/`](decisiones/) | Decisiones vigentes: stack (0001), alcance del MVP (0002), credenciales y pagos (0003). |
+| [`bitacora/`](bitacora/) | Una entrada por PR o hito, con evidencia. |
+| [`AUDITORIA_PROTOTIPO_FASTAPI.md`](AUDITORIA_PROTOTIPO_FASTAPI.md) | Auditoría del prototipo de Ricardo. |
 
-Decisiones propuestas para confirmar en la mesa: solo tienditas · la IA (OpenAI) propone el carrito a partir del dictado y el empleado confirma · demo con un pago real de $0.01 MXN y confirmación verificada por webhook. El stack sigue siendo una propuesta.
+La app del MVP está en [`../app/`](../app/README.md) (Python/FastAPI). El manual para agentes y personas es [`../AGENTS.md`](../AGENTS.md).
 
 Reglas que aplican a todo: las credenciales nunca van al repo; los pagos de prueba los hace una persona; una venta solo pasa a pagada con una confirmación verificada.

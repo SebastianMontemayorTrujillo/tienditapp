@@ -1,5 +1,7 @@
 # tienditapp · Plan de construcción (hackatón)
 
+> **Actualización 7-nov 15:30:** el stack cambió a Python/FastAPI + SQLite (ver [`decisiones/0001-stack.md`](decisiones/0001-stack.md)) y la app vive en `app/`. Los contratos, reglas, fallas a cubrir y el orden de trabajo de este plan siguen vigentes; las rutas y comandos de Next.js/Supabase quedan como referencia. Equivalencias: `lib/pey.ts` → `app/pey.py`, `lib/sales.ts` + webhook → `app/main.py`, `lib/parse.ts` → `app/parse.py`, pantallas → `app/static/`, Supabase → `app/db.py` (SQLite). El aviso a varios teléfonos usa consulta periódica (`/api/paid-since`) en lugar de Realtime.
+
 > **Para quien ejecute:** cada bloque (A-E) tiene un dueño y un contrato. Construye contra el contrato, no contra el código de otro equipo. Los pasos usan checkboxes (`- [ ]`).
 
 **Meta:** que una tiendita cobre una venta real por CoDi con pey, desde el celular de cualquier empleado, con confirmación verificada por webhook, aviso en voz alta e inventario que se actualiza solo.

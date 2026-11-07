@@ -1,0 +1,15 @@
+# Credenciales: nunca al repo
+.env
+.env.*
+!.env.example
+
+# Datos locales y dependencias
+app/data/
+*.db
+__pycache__/
+.pytest_cache/
+.venv/
+venv/
+node_modules/
+.DS_Store
+*.log
